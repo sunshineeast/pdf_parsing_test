@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pdftotext
 from streamlit_pdf_viewer import pdf_viewer
+from io import StringIO
 # !sudo apt install build-essential libpoppler-cpp-dev pkg-config python3-dev
 
 st.set_page_config(
@@ -19,7 +20,8 @@ with st.container(border=True):
         st.success("File is uploaded")
 
 if st.session_state.uploaded_file:
-    st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
+    # st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
+    st.session_state.doc_parsed = StringIO(st.session_state.uploaded_file.getvalue().decode("utf-8"))
     st.write("st.session_state.doc_parsed")
 
     # (pdf viewing) works 
