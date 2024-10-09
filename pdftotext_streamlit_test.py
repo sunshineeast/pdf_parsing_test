@@ -32,6 +32,6 @@ if st.session_state.uploaded_file:
     with open(st.session_state.doc_parsed, "rb") as f:
         st.session_state.pdf = pdftotext.PDF(f,physical=True)
 
-    st.write(st.session_state.st.session_state.pdf)
+    st.write(st.session_state.pdf)
 
     
