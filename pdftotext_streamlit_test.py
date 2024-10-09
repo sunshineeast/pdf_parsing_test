@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 import os
 import pdftotext
+from streamlit_pdf_viewer import pdf_viewer
 
 st.set_page_config(
     page_title="Health Quant Analysis",
@@ -36,22 +37,17 @@ if st.session_state.uploaded_file:
 
 # with open('doc_parsed.pickle', 'rb') as f:
 #     st.session_state.doc_parsed = pickle.load(f)
-
 # st.header("Welcome to the Multipage App! 👋")
-
-
-########################### 1 - directly using uploaded file ###############################
 
 
     st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
     st.write("st.session_state.doc_parsed")
-    
-    with open(st.session_state.doc_parsed, "rb") as f:
-        st.session_state.pdf = pdftotext.PDF(f)
 
-    st.write(st.session_state.st.session_state.pdf)
+    pdf_viewer(input=st.session_state.doc_parsed, width=700)
+    
+    # with open(st.session_state.doc_parsed, "rb") as f:
+    #     st.session_state.pdf = pdftotext.PDF(f)
+
+    # st.write(st.session_state.st.session_state.pdf)
 
     
-    # st.snow()
-    # st.success('Parsing is Complete')  
-    # st.write(st.session_state.doc_parsed)
