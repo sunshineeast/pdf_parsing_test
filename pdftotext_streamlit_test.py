@@ -4,6 +4,7 @@ import datetime
 import os
 import pdftotext
 from streamlit_pdf_viewer import pdf_viewer
+# !sudo apt install build-essential libpoppler-cpp-dev pkg-config python3-dev
 
 st.set_page_config(
     page_title="Health Quant Analysis",
