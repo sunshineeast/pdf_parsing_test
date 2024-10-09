@@ -43,11 +43,12 @@ if st.session_state.uploaded_file:
     st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
     st.write("st.session_state.doc_parsed")
 
-    pdf_viewer(input=st.session_state.doc_parsed, width=700)
+    # pdf_viewer(input=st.session_state.doc_parsed, width=700)
     
     # with open(st.session_state.doc_parsed, "rb") as f:
     #     st.session_state.pdf = pdftotext.PDF(f)
 
-    # st.write(st.session_state.st.session_state.pdf)
+    st.session_state.pdf = pdftotext.PDF(st.session_state.doc_parsed)
+    st.write(st.session_state.st.session_state.pdf)
 
     
