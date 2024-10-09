@@ -22,7 +22,7 @@ with st.container(border=True):
 if st.session_state.uploaded_file:
     # st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
     st.session_state.doc_parsed = StringIO(st.session_state.uploaded_file.getvalue().decode("utf-8"))
-    st.write("st.session_state.doc_parsed")
+    st.write(st.session_state.doc_parsed)
 
     # (pdf viewing) works 
     # pdf_viewer(input=st.session_state.doc_parsed, width=700)
