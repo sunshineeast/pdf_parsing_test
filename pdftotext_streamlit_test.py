@@ -43,7 +43,7 @@ if st.session_state.uploaded_file:
 ########################### 1 - directly using uploaded file ###############################
 
 
-    st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
+    st.session_state.doc_parsed = st.session_state.uploaded_file # .getvalue()
 
     with open(st.session_state.doc_parsed, "rb") as f:
         st.session_state.pdf = pdftotext.PDF(f)
