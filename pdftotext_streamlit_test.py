@@ -23,7 +23,7 @@ if st.session_state.uploaded_file:
     st.session_state.doc_parsed = st.session_state.uploaded_file.getvalue()
     # st.session_state.doc_parsed = StringIO(st.session_state.uploaded_file.getvalue().decode("utf-8"))
     # st.session_state.doc_parsed = StringIO(st.session_state.uploaded_file.getvalue())
-    with st.expander('Click to View file):
+    with st.expander("Click to View file"):
         st.write(st.session_state.doc_parsed)
 
     # (pdf viewing) works 
