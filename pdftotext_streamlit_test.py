@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import pdftotext
 from streamlit_pdf_viewer import pdf_viewer
-from io import StringIO
+import re
 # !sudo apt install build-essential libpoppler-cpp-dev pkg-config python3-dev
 
 st.set_page_config(
@@ -45,7 +45,8 @@ if st.session_state.uploaded_file:
 
     st.session_state.pdf = pdftotext.PDF(st.session_state.uploaded_file,physical=True)
     
-    for st.session_state.page in st.session_state.pdf:
-        st.write(st.session_state.page)
+    with st.expander("Click to view"):
+        for st.session_state.page in st.session_state.pdf:
+            st.write(st.session_state.page)
 
-    
+    st.write([re.sub('    +', '|', i) for i in st.session_state.pdf[3].splitlines()])
