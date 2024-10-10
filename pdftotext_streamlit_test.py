@@ -35,7 +35,8 @@ if st.session_state.uploaded_file:
 
     with open("sample_pdfs/Nonlinear_Optimization_in_R_using_nlopt.pdf", "rb") as f:
         st.session_state.pdf = pdftotext.PDF(f,physical=True)
-    
-    st.write(st.session_state.pdf)
+
+    for st.session_state.page in st.session_state.pdf:
+        st.write(st.session_state.page)
 
     
