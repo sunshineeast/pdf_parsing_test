@@ -56,5 +56,4 @@ if st.session_state.uploaded_file:
     ss.df = ss.df.loc[:,[1,2,3,4]]
     ss.df.columns = ['Test','Result','Range','Unit']
     ss.df = ss.df.reset_index(drop = True)
-    ss.df = ss.df.iloc[:,1:5]
     st.dataframe(ss.df)
