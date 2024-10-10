@@ -47,5 +47,5 @@ if st.session_state.uploaded_file:
 
     ss.df = pd.DataFrame(ss.sample_list) # , columns=["All_data"]
     ss.df = ss.df[ss.df[0].str.contains('\|')]
-
+    ss.df = ss.df.drop_duplicates(ignore_index=True)
     st.dataframe(ss.df)
