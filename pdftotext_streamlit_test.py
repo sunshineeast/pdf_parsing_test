@@ -52,4 +52,5 @@ if st.session_state.uploaded_file:
 
     ss.df[['Test','Result','Range','Unit']] = ss.df[0].str.split(pat="|", expand=True)
     ss.df = ss.df.reset_index(drop = True)
+    ss.df = ss.df.iloc[:,1:5]
     st.dataframe(ss.df)
