@@ -40,8 +40,10 @@ if st.session_state.uploaded_file:
     # with open(st.session_state.uploaded_file, "rb") as f:
     #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
 
-    with open(st.session_state.doc_parsed, "rb") as f:
-        st.session_state.pdf = pdftotext.PDF(f,physical=True)
+    # with open(st.session_state.doc_parsed, "rb") as f:
+    #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
+
+    st.session_state.pdf = pdftotext.PDF(st.session_state.uploaded_file,physical=True)
     
     for st.session_state.page in st.session_state.pdf:
         st.write(st.session_state.page)
