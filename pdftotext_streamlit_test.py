@@ -44,3 +44,8 @@ if st.session_state.uploaded_file:
       ss.sample_list = ss.sample_list + [re.sub('    +', '|', i) for i in st.session_state.pdf[ss.pg].splitlines()]
     
     st.write(ss.sample_list)
+
+    ss.df = pd.DataFrame(ss.sample_list) # , columns=["All_data"]
+    ss.df = ss.df[ss.df[0].str.contains('\|')]
+
+    st.dataframe(ss.df)
