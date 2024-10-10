@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pdftotext
 from streamlit_pdf_viewer import pdf_viewer
+from streamlit import session_state as ss
 import re
 # !sudo apt install build-essential libpoppler-cpp-dev pkg-config python3-dev
 
@@ -29,19 +30,6 @@ if st.session_state.uploaded_file:
     # (pdf viewing) works 
     # pdf_viewer(input=st.session_state.doc_parsed, width=700)
     
-    # Directly loading pdf from repo dosn't work
-    # st.session_state.pdf = pdftotext.PDF("sample_pdfs/Nonlinear_Optimization_in_R_using_nlopt.pdf",physical=True)
-
-    # this works (but need to reboot app everytime I make change in code)
-    # with open("sample_pdfs/Nonlinear_Optimization_in_R_using_nlopt.pdf", "rb") as f:
-    #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
-
-    # TypeError: expected str, bytes or os.PathLike object, not UploadedFile
-    # with open(st.session_state.uploaded_file, "rb") as f:
-    #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
-
-    # with open(st.session_state.doc_parsed, "rb") as f:
-    #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
 
     st.session_state.pdf = pdftotext.PDF(st.session_state.uploaded_file,physical=True)
     
@@ -50,3 +38,9 @@ if st.session_state.uploaded_file:
             st.write(st.session_state.page)
 
     st.write([re.sub('    +', '|', i) for i in st.session_state.pdf[3].splitlines()])
+
+    ss.sample_list = []
+    for ss.pg in range(0, len(st.session_state.pdf)):
+      ss.sample_list = ss.sample_list + [re.sub('    +', '|', i) for i in st.session_state.pdf[ss.pg].splitlines()]
+    
+    st.write(ss.sample_list)
