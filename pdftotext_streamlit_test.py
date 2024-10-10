@@ -27,11 +27,15 @@ if st.session_state.uploaded_file:
 
     # (pdf viewing) works 
     # pdf_viewer(input=st.session_state.doc_parsed, width=700)
-
+    
     # Not working on streamlit but working on google colab
-    with open(st.session_state.doc_parsed, "rb") as f:
-        st.session_state.pdf = pdftotext.PDF(f,physical=True)
+    # with open(st.session_state.doc_parsed, "rb") as f:
+    #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
 
+
+    with open("sample_pdfs/Nonlinear_Optimization_in_R_using_nlopt.pdf", "rb") as f:
+        st.session_state.pdf = pdftotext.PDF(f,physical=True)
+    
     st.write(st.session_state.pdf)
 
     
