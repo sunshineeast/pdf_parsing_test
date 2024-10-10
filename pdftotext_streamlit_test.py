@@ -33,19 +33,23 @@ if st.session_state.uploaded_file:
 
     st.session_state.pdf = pdftotext.PDF(st.session_state.uploaded_file,physical=True)
     
-    with st.expander("Click to view"):
-        for st.session_state.page in st.session_state.pdf:
-            st.write(st.session_state.page)
+    # with st.expander("Click to view"):
+    #     for st.session_state.page in st.session_state.pdf:
+    #         st.write(st.session_state.page)
 
-    st.write([re.sub('    +', '|', i) for i in st.session_state.pdf[3].splitlines()])
+    # st.write([re.sub('    +', '|', i) for i in st.session_state.pdf[3].splitlines()])
 
     ss.sample_list = []
     for ss.pg in range(0, len(st.session_state.pdf)):
       ss.sample_list = ss.sample_list + [re.sub('    +', '|', i) for i in st.session_state.pdf[ss.pg].splitlines()]
     
-    st.write(ss.sample_list)
+    # st.write(ss.sample_list)
 
     ss.df = pd.DataFrame(ss.sample_list) # , columns=["All_data"]
     ss.df = ss.df[ss.df[0].str.contains('\|')]
     ss.df = ss.df.drop_duplicates(ignore_index=True)
+    st.dataframe(ss.df)
+
+    ss.df[['Test','Result','Range','Unit']] = ss.df[0].str.split(pat="|", expand=True)
+    ss.df = ss.df.reset_index(drop = True)
     st.dataframe(ss.df)
