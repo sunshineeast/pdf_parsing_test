@@ -37,7 +37,7 @@ if st.session_state.uploaded_file:
     #     st.session_state.pdf = pdftotext.PDF(f,physical=True)
 
     # Not working on streamlit but working on google colab
-    with open(st.session_state.st.session_state.uploaded_file, "rb") as f:
+    with open(st.session_state.uploaded_file, "rb") as f:
         st.session_state.pdf = pdftotext.PDF(f,physical=True)
     
     for st.session_state.page in st.session_state.pdf:
